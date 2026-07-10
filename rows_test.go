@@ -84,7 +84,7 @@ func ExampleRows_closeError() {
 
 	// Note: that close will return error only before rows EOF
 	// that is a default sql package behavior. If you run rs.Next()
-	// it will handle the error internally and return nil bellow
+	// it will handle the error internally and return nil below
 	if err := rs.Close(); err != nil {
 		fmt.Println("got error:", err)
 	}

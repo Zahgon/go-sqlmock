@@ -71,7 +71,7 @@ type SqlmockCommon interface {
 	// expectations in the order they were set or not.
 	//
 	// By default it is set to - true. But if you use goroutines
-	// to parallelize your query executation, that option may
+	// to parallelize your query execution, that option may
 	// be handy.
 	//
 	// This option may be turned on anytime during tests. As soon
