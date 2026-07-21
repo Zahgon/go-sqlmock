@@ -6,11 +6,6 @@ type statement struct {
 	query string
 }
 
-func (stmt *statement) Close() error {
-	stmt.ex.wasClosed = true
-	return stmt.ex.closeErr
-}
+func (stmt *statement) Close() error { _ = "STUB: not implemented"; return nil }
 
-func (stmt *statement) NumInput() int {
-	return -1
-}
+func (stmt *statement) NumInput() int { _ = "STUB: not implemented"; return 0 }

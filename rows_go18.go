@@ -1,74 +1,48 @@
+//go:build go1.8
 // +build go1.8
 
 package sqlmock
 
 import (
-	"database/sql/driver"
-	"io"
 	"reflect"
 )
 
-// Implement the "RowsNextResultSet" interface
-func (rs *rowSets) HasNextResultSet() bool {
-	return rs.pos+1 < len(rs.sets)
-}
+func (rs *rowSets) HasNextResultSet() bool { _ = "STUB: not implemented"; return false }
 
-// Implement the "RowsNextResultSet" interface
-func (rs *rowSets) NextResultSet() error {
-	if !rs.HasNextResultSet() {
-		return io.EOF
-	}
+func (rs *rowSets) NextResultSet() error { _ = "STUB: not implemented"; return nil }
 
-	rs.pos++
-	return nil
-}
-
-// type for rows with columns definition created with sqlmock.NewRowsWithColumnDefinition
 type rowSetsWithDefinition struct {
 	*rowSets
 }
 
-// Implement the "RowsColumnTypeDatabaseTypeName" interface
 func (rs *rowSetsWithDefinition) ColumnTypeDatabaseTypeName(index int) string {
-	return rs.getDefinition(index).DbType()
+	_ = "STUB: not implemented"
+	return ""
 }
 
-// Implement the "RowsColumnTypeLength" interface
 func (rs *rowSetsWithDefinition) ColumnTypeLength(index int) (length int64, ok bool) {
-	return rs.getDefinition(index).Length()
+	_ = "STUB: not implemented"
+	return 0, false
 }
 
-// Implement the "RowsColumnTypeNullable" interface
 func (rs *rowSetsWithDefinition) ColumnTypeNullable(index int) (nullable, ok bool) {
-	return rs.getDefinition(index).IsNullable()
+	_ = "STUB: not implemented"
+	return false, false
 }
 
-// Implement the "RowsColumnTypePrecisionScale" interface
 func (rs *rowSetsWithDefinition) ColumnTypePrecisionScale(index int) (precision, scale int64, ok bool) {
-	return rs.getDefinition(index).PrecisionScale()
+	_ = "STUB: not implemented"
+	return 0, 0, false
 }
 
-// ColumnTypeScanType is defined from driver.RowsColumnTypeScanType
 func (rs *rowSetsWithDefinition) ColumnTypeScanType(index int) reflect.Type {
-	return rs.getDefinition(index).ScanType()
+	_ = "STUB: not implemented"
+	return *new(reflect.Type)
 }
 
-// return column definition from current set metadata
 func (rs *rowSetsWithDefinition) getDefinition(index int) *Column {
-	return rs.sets[rs.pos].def[index]
+	_ = "STUB: not implemented"
+	return nil
 }
 
-// NewRowsWithColumnDefinition return rows with columns metadata
-func NewRowsWithColumnDefinition(columns ...*Column) *Rows {
-	cols := make([]string, len(columns))
-	for i, column := range columns {
-		cols[i] = column.Name()
-	}
-
-	return &Rows{
-		cols:      cols,
-		def:       columns,
-		nextErr:   make(map[int]error),
-		converter: driver.DefaultParameterConverter,
-	}
-}
+func NewRowsWithColumnDefinition(columns ...*Column) *Rows { _ = "STUB: not implemented"; return nil }

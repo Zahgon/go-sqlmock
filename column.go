@@ -2,7 +2,6 @@ package sqlmock
 
 import "reflect"
 
-// Column is a mocked column Metadata for rows.ColumnTypes()
 type Column struct {
 	name       string
 	dbType     string
@@ -16,62 +15,33 @@ type Column struct {
 	scanType   reflect.Type
 }
 
-func (c *Column) Name() string {
-	return c.name
-}
+func (c *Column) Name() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Column) DbType() string {
-	return c.dbType
-}
+func (c *Column) DbType() string { _ = "STUB: not implemented"; return "" }
 
-func (c *Column) IsNullable() (bool, bool) {
-	return c.nullable, c.nullableOk
-}
+func (c *Column) IsNullable() (bool, bool) { _ = "STUB: not implemented"; return false, false }
 
-func (c *Column) Length() (int64, bool) {
-	return c.length, c.lengthOk
-}
+func (c *Column) Length() (int64, bool) { _ = "STUB: not implemented"; return 0, false }
 
 func (c *Column) PrecisionScale() (int64, int64, bool) {
-	return c.precision, c.scale, c.psOk
+	_ = "STUB: not implemented"
+	return 0, 0, false
 }
 
-func (c *Column) ScanType() reflect.Type {
-	return c.scanType
-}
+func (c *Column) ScanType() reflect.Type { _ = "STUB: not implemented"; return *new(reflect.Type) }
 
-// NewColumn returns a Column with specified name
-func NewColumn(name string) *Column {
-	return &Column{
-		name: name,
-	}
-}
+func NewColumn(name string) *Column { _ = "STUB: not implemented"; return nil }
 
-// Nullable returns the column with nullable metadata set
-func (c *Column) Nullable(nullable bool) *Column {
-	c.nullable = nullable
-	c.nullableOk = true
-	return c
-}
+func (c *Column) Nullable(nullable bool) *Column { _ = "STUB: not implemented"; return nil }
 
-// OfType returns the column with type metadata set
 func (c *Column) OfType(dbType string, sampleValue interface{}) *Column {
-	c.dbType = dbType
-	c.scanType = reflect.TypeOf(sampleValue)
-	return c
+	_ = "STUB: not implemented"
+	return nil
 }
 
-// WithLength returns the column with length metadata set.
-func (c *Column) WithLength(length int64) *Column {
-	c.length = length
-	c.lengthOk = true
-	return c
-}
+func (c *Column) WithLength(length int64) *Column { _ = "STUB: not implemented"; return nil }
 
-// WithPrecisionAndScale returns the column with precision and scale metadata set.
 func (c *Column) WithPrecisionAndScale(precision, scale int64) *Column {
-	c.precision = precision
-	c.scale = scale
-	c.psOk = true
-	return c
+	_ = "STUB: not implemented"
+	return nil
 }
